@@ -34,9 +34,9 @@ public class SecurityConfig {
         return http.csrf(customizer -> customizer.disable()).
                 authorizeHttpRequests(request -> request
                         .requestMatchers("/login", "/register").permitAll()
-                        .requestMatchers( HttpMethod.POST, "/api/v1/events/admin").hasRole("ADMIN")
-                        .requestMatchers( HttpMethod.PUT, "/api/v1/events/admin").hasRole("ADMIN")
-                        .requestMatchers("/api/v1/events/user").hasRole("USER")
+                        .requestMatchers(HttpMethod.POST, "/api/events/admin").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/preregistration/admin/approve").hasRole("ADMIN")
+                        .requestMatchers("/api/events/user").hasRole("USER")
                         .anyRequest().authenticated()).
                 httpBasic(Customizer.withDefaults()).
                 sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
